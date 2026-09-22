@@ -1,0 +1,336 @@
+/* ==========================================================================
+   1. CSS RESET & BOX SIZING
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   2. COLOR PALETTES & THEME VARIABLES
+   ========================================================================== */
+
+/* Light Mode Variables (~50% Transparency) */
+:root {
+  --bg-primary: rgb(255, 247, 235); /* Solid page background */
+  --bg-card-text: rgba(255, 252, 247, 0.65); /* Text card background */
+  --bg-card-img: rgba(184, 194, 142, 0.5); /* Sage Photo Base */
+  --card-backdrop: rgba(225, 212, 192, 0.55); /* Backdrop Box */
+  --bg-tertiary: rgba(162, 171, 115, 0.35); /* Pill tags */
+  --border-color: rgba(162, 171, 115, 0.4); /* Border line for glass edges */
+
+  --text-primary: rgb(44, 44, 44);
+  --text-secondary: rgba(44, 44, 44, 0.85);
+  --text-muted: rgba(44, 44, 44, 0.65);
+  --accent-color: rgb(204, 58, 99);
+
+  /* Explicit Form Control Colors for Light Mode */
+  --input-bg: #ffffff;
+  --input-text: rgb(44, 44, 44);
+  --input-placeholder: rgba(44, 44, 44, 0.5);
+  --input-border: rgba(162, 171, 115, 0.5);
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"],
+body.dark-mode,
+html.dark,
+.dark {
+  /* Surface Colors */
+  --bg-primary: rgb(44, 44, 44);
+  --bg-card-text: rgba(97, 45, 83, 0.65);
+  --bg-card-img: rgba(32, 26, 30, 0.5);
+  --card-backdrop: rgba(133, 57, 83, 0.55);
+  --bg-tertiary: rgba(133, 57, 83, 0.4);
+  --border-color: rgba(243, 244, 244, 0.2);
+
+  /* Updated Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.92);
+  --text-muted: rgba(255, 255, 255, 0.75);
+  --accent-color: #ffffff;
+
+  /* Explicit Form Control Colors for Dark Mode */
+  --input-bg: rgba(32, 26, 30, 0.75);
+  --input-text: #ffffff;
+  --input-placeholder: rgba(255, 255, 255, 0.45);
+  --input-border: rgba(243, 244, 244, 0.2);
+}
+
+/* ==========================================================================
+   3. GLOBAL TYPOGRAPHY & BASE STYLES
+   ========================================================================== */
+html,
+body {
+  height: 100%;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+.serif {
+  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   4. GLOBAL FORM CONTROL FIXES (LIGHT & DARK MODE)
+   ========================================================================== */
+
+/* Target text inputs explicitly to beat browser user-agent defaults */
+input[type="text"],
+input[type="email"],
+input,
+select,
+textarea {
+  font-family: inherit;
+  background-color: var(--input-bg) !important;
+  color: var(--input-text) !important;
+  border: 1px solid var(--input-border) !important;
+  border-radius: 6px;
+  outline: none;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--input-placeholder) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 3px var(--bg-tertiary) !important;
+}
+
+/* Ensure dropdown options use full solid backgrounds */
+select option {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Overrule Chrome / Edge / Safari Autofill Dark Gray Overlay */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-internal-autofill-selected {
+  -webkit-text-fill-color: var(--input-text) !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--input-bg) inset !important;
+  box-shadow: 0 0 0px 1000px var(--input-bg) inset !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+/* Strict Light Mode Input Fallback */
+:root:not([data-theme="dark"]) input[type="text"],
+:root:not([data-theme="dark"]) input[type="email"],
+:root:not([data-theme="dark"]) input {
+  background-color: #ffffff !important;
+  color: rgb(44, 44, 44) !important;
+  border: 1px solid rgba(162, 171, 115, 0.5) !important;
+}
+
+/* Strict Dark Mode Input Fallback */
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="email"],
+[data-theme="dark"] input {
+  background-color: rgba(32, 26, 30, 0.75) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(243, 244, 244, 0.2) !important;
+}
+
+/* ==========================================================================
+   5. SITE MAINTENANCE / OFFLINE FALLBACK THEME
+   ========================================================================== */
+
+.maintenance-wrapper {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-primary, #121113);
+  padding: 1.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+/* Ambient Glow Orbs */
+.maintenance-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.maintenance-glow.orb-1 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #cc3a63 0%, #853953 100%);
+  top: -100px;
+  left: -100px;
+}
+
+.maintenance-glow.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #b8c28e 0%, #7d8753 100%);
+  bottom: -150px;
+  right: -100px;
+}
+
+/* Glassmorphic Card Container */
+.maintenance-glass-card {
+  position: relative;
+  max-width: 520px;
+  width: 100%;
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  color: var(--text-primary, #ffffff);
+}
+
+/* Status Badge with Pulsing Dot */
+.maintenance-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1rem;
+  border-radius: 20px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #fbbf24;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #f59e0b;
+  box-shadow: 0 0 10px #f59e0b;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+/* Editorial Title & Description */
+.maintenance-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 500;
+  margin: 0 0 1rem 0;
+  color: var(--text-primary, #ffffff);
+  line-height: 1.25;
+}
+
+.maintenance-description {
+  font-size: clamp(0.9rem, 1.2vw, 0.98rem);
+  color: var(--text-secondary, rgba(243, 244, 244, 0.65));
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Error Code Debug Pill */
+.maintenance-error-details {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.75rem;
+  word-break: break-all;
+}
+
+.maintenance-error-details code {
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Refresh Button */
+.maintenance-retry-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 2rem;
+  background: linear-gradient(135deg, #cc3a63 0%, #a22b4d 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(204, 58, 99, 0.35);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.maintenance-retry-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(204, 58, 99, 0.5);
+}

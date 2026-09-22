@@ -1,0 +1,241 @@
+/* Base Section Styling */
+.works-section {
+  padding: 5rem 3rem;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-top: 1px solid var(--border-color);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.works-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header */
+.works-header {
+  margin-bottom: 3rem;
+}
+
+.works-label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.works-title {
+  font-family: "Merriweather", Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.works-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.5rem 1.1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+.filter-btn.active {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+/* Grid Layout */
+.works-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Card Item Styling */
+.work-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.work-card:hover {
+  border-color: var(--text-secondary);
+  transform: translateY(-2px);
+}
+
+/* Card Top Bar */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.work-publication {
+  font-family: "Merriweather", Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+.work-category-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  background-color: var(--bg-primary);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+/* Card Content */
+.work-card-title {
+  font-family: "Merriweather", Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 0.85rem;
+}
+
+.work-card-title a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.work-card-title a:hover {
+  color: var(--text-secondary);
+}
+
+.work-excerpt {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+/* Card Footer Bar */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: auto;
+}
+
+.work-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.meta-dot {
+  color: var(--border-color);
+}
+
+.work-time {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.meta-icon {
+  font-size: 0.75rem;
+}
+
+/* Read Link */
+.read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.read-link:hover {
+  opacity: 0.7;
+}
+
+.link-icon {
+  font-size: 0.75rem;
+}
+
+/* =========================================================
+   RESPONSIVE STYLES (Mobile & Tablet)
+   ========================================================= */
+@media (max-width: 768px) {
+  .works-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .works-title {
+    font-size: 2rem;
+  }
+
+  .work-card {
+    padding: 1.5rem;
+  }
+
+  .work-card-title {
+    font-size: 1.25rem;
+  }
+
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .read-link {
+    align-self: flex-end;
+  }
+}

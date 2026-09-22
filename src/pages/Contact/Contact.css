@@ -1,0 +1,437 @@
+/* ==========================================================================
+   1. BASE SECTION & CONTAINER
+   ========================================================================== */
+.contact-section {
+  padding: 6rem 1.5rem;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  overflow: hidden;
+}
+
+.contact-container {
+  max-width: 1050px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   2. HEADER TYPOGRAPHY
+   ========================================================================== */
+.contact-header {
+  margin-bottom: 3.5rem;
+}
+
+.contact-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.contact-title {
+  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  font-size: 2.75rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.15;
+}
+
+.contact-subtitle {
+  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   3. GRID LAYOUT
+   ========================================================================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* ==========================================================================
+   4. LEFT COLUMN: EDITORIAL INFO CARDS
+   ========================================================================== */
+.contact-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-card {
+  background-color: var(--bg-card-text);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.card-icon-wrapper {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.card-icon {
+  font-size: 1rem;
+  color: var(--accent-color);
+}
+
+.info-card-title {
+  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.info-card-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.agent-details {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
+.agent-name {
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--text-primary);
+}
+
+.agent-agency {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.agent-email,
+.direct-email-link {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--accent-color);
+  padding-bottom: 2px;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.agent-email:hover,
+.direct-email-link:hover {
+  color: var(--accent-color);
+}
+
+.guidelines-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.guidelines-icon {
+  font-size: 0.85rem;
+  color: var(--accent-color);
+}
+
+.guidelines-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   5. RIGHT COLUMN: GLASS FORM & INPUT FIXES
+   ========================================================================== */
+.contact-form-col {
+  background-color: var(--bg-card-text);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 3rem 2.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-error-banner {
+  padding: 0.85rem 1rem;
+  border-radius: 6px;
+  background-color: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  font-size: 0.88rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group .label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-primary) !important;
+}
+
+/* Glass Inputs, Textareas, and Dropdowns using var() design tokens */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text-primary) !important;
+  /* ADD THIS: Force background color */
+  background-color: var(--bg-primary, #ffffff) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 6px;
+  outline: none;
+  box-sizing: border-box;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.7;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 3px var(--bg-tertiary) !important;
+}
+
+/* Select option items contrast fix */
+.form-group select option {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Chrome / Safari Autofill Override */
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus,
+.form-group input:-internal-autofill-selected {
+  -webkit-text-fill-color: var(--text-primary) !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--input-bg, #ffffff) inset !important;
+  box-shadow: 0 0 0px 1000px var(--input-bg, #ffffff) inset !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+/* Explicit Light Mode Override for Input Tags */
+:root:not([data-theme="dark"]) .form-group input {
+  background-color: #ffffff !important;
+  color: rgb(44, 44, 44) !important;
+  border: 1px solid rgba(162, 171, 115, 0.5) !important;
+}
+
+/* Explicit Dark Mode Override for Input Tags */
+[data-theme="dark"] .form-group input {
+  background-color: rgba(32, 26, 30, 0.75) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(243, 244, 244, 0.2) !important;
+}
+
+/* Submit Action Button */
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.9rem 2.25rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border: 1px solid var(--text-primary);
+  border-radius: 30px;
+  cursor: pointer;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background-color 0.2s ease;
+  align-self: flex-start;
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-icon {
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   6. SUCCESS CARD STATE
+   ========================================================================== */
+.form-success-box {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.success-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--bg-tertiary);
+  color: var(--accent-color);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+}
+
+.form-success-box h3 {
+  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  font-size: 1.75rem;
+  color: var(--text-primary);
+}
+
+.form-success-box p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 420px;
+  line-height: 1.6;
+}
+
+.reset-btn {
+  margin-top: 1rem;
+  padding: 0.65rem 1.75rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--accent-color);
+}
+
+/* ==========================================================================
+   7. TABLET & MOBILE RESPONSIVENESS
+   ========================================================================== */
+
+/* Tablets / iPad Portrait (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .contact-section {
+    padding: 4.5rem 1.5rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .contact-title {
+    font-size: 2.35rem;
+  }
+
+  .contact-form-col {
+    padding: 2.5rem 2rem;
+  }
+}
+
+/* Smartphones (max-width: 767px) */
+@media (max-width: 767px) {
+  .contact-section {
+    padding: 3rem 1rem;
+  }
+
+  .contact-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-title {
+    font-size: 1.85rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1rem;
+  }
+
+  .contact-form-col {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}

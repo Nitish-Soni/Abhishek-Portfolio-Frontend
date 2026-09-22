@@ -1,0 +1,713 @@
+/* ==========================================================================
+   ADMIN CONTACT FORM - FLUID DARK GLASS THEME
+   ========================================================================== */
+
+.admin-contact-container {
+  width: 100%;
+  max-width: 1200px;
+  max-height: 90vh;
+  height: auto;
+  margin: 0 auto;
+  color: #f3f4f4;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  box-sizing: border-box;
+  padding: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+/* Alert Notifications */
+.admin-alert {
+  padding: 0.85rem 1.1rem;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: clamp(0.82rem, 1.1vw, 0.9rem);
+  word-break: break-word;
+}
+
+.admin-alert.error {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
+/* Form & Module Section Cards */
+.form-section {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+  box-sizing: border-box;
+}
+
+.form-section h3 {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: #ffffff;
+}
+
+.subtext {
+  font-size: clamp(0.78rem, 1vw, 0.85rem);
+  color: rgba(243, 244, 244, 0.6);
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+}
+
+/* Tab Navigation Bar */
+.admin-tab-nav {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  margin: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(243, 244, 244, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: clamp(0.82rem, 1vw, 0.88rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+  background: rgba(204, 58, 99, 0.2);
+  border-color: rgba(204, 58, 99, 0.4);
+  color: #ffffff;
+}
+
+.badge {
+  background-color: #cc3a63;
+  color: #ffffff;
+  font-size: 0.72rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* Header & Filter Controls Row */
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.35rem 0.8rem;
+  font-size: clamp(0.75rem, 0.9vw, 0.8rem);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.2);
+  color: rgba(243, 244, 244, 0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Inbox Cards List */
+.inbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 0.35rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.inbox-card {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  word-break: break-word;
+}
+
+.inbox-card:hover {
+  border-color: #cc3a63;
+  background: rgba(204, 58, 99, 0.08);
+  transform: translateY(-1px);
+}
+
+.inbox-card.unread {
+  border-left: 4px solid #cc3a63;
+}
+
+.inbox-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  margin-bottom: 0.35rem;
+}
+
+.sender-name {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.inquiry-date {
+  color: rgba(243, 244, 244, 0.4);
+  white-space: nowrap;
+}
+
+.inbox-subject {
+  font-size: 0.92rem;
+  margin: 0 0 0.35rem 0;
+  color: rgba(243, 244, 244, 0.9);
+}
+
+.inbox-snippet {
+  font-size: 0.82rem;
+  color: rgba(243, 244, 244, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 0 0.75rem 0;
+}
+
+.inbox-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.type-pill {
+  font-size: 0.72rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.2rem 0.55rem;
+  border-radius: 12px;
+  color: rgba(243, 244, 244, 0.7);
+}
+
+.status-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.status-new {
+  color: #fbbf24;
+}
+.status-read {
+  color: #60a5fa;
+}
+.status-replied {
+  color: #4ade80;
+}
+
+/* ==========================================================================
+   MODAL OVERLAY & POPUP CONTAINER
+   ========================================================================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.modal-card {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 600px;
+  padding: 1.5rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+  color: #f3f4f4;
+  animation: modalFadeIn 0.25s ease-out;
+  box-sizing: border-box;
+}
+
+.modal-card.detail-modal {
+  width: 100%;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+}
+
+.confirm-modal {
+  max-width: 420px;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 1. Header (Pinned at Top) */
+.pane-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.75rem;
+  flex-shrink: 0;
+}
+
+.pane-header h3 {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  margin: 0;
+  color: #ffffff;
+  word-break: break-word;
+}
+
+/* 2. Middle Content Body (Scrolls Internally) */
+.modal-scroll-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sender-meta {
+  font-size: clamp(0.8rem, 1vw, 0.85rem);
+  line-height: 1.6;
+  color: rgba(243, 244, 244, 0.7);
+  margin-bottom: 0.85rem;
+  word-break: break-word;
+}
+
+.sender-meta p {
+  margin: 0.25rem 0;
+}
+
+.section-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(243, 244, 244, 0.7);
+  margin-bottom: 0.35rem;
+}
+
+.replied-timestamp {
+  color: #4ade80 !important;
+}
+
+/* Message Boxes */
+.message-body {
+  width: 100%;
+  max-height: 150px;
+  height: auto;
+  resize: none;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.35) !important;
+  padding: 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  line-height: 1.55;
+  font-size: clamp(0.85rem, 1.1vw, 0.9rem);
+  color: rgba(243, 244, 244, 0.9) !important;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-bottom: 0.6rem;
+}
+
+.message-body.replied-box {
+  background: rgba(74, 222, 128, 0.04) !important;
+  border-color: rgba(74, 222, 128, 0.25) !important;
+}
+
+/* Custom Scrollbars */
+.message-body::-webkit-scrollbar,
+.inbox-list::-webkit-scrollbar,
+.modal-scroll-body::-webkit-scrollbar,
+.types-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.message-body::-webkit-scrollbar-track,
+.inbox-list::-webkit-scrollbar-track,
+.modal-scroll-body::-webkit-scrollbar-track,
+.types-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.message-body::-webkit-scrollbar-thumb,
+.inbox-list::-webkit-scrollbar-thumb,
+.modal-scroll-body::-webkit-scrollbar-thumb,
+.types-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+/* 3. Footer Actions (Pinned at Bottom) */
+.pane-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+}
+
+.pane-actions .btn-save,
+.pane-actions .btn-mark-read,
+.pane-actions .btn-send-reply-primary,
+.pane-actions .delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  height: 40px;
+  padding: 0 0.9rem;
+  margin: 2px;
+  border-radius: 8px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-sizing: border-box;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.btn-save,
+.btn-send-reply-primary,
+.add-btn {
+  padding: 0.55rem;
+  border-radius: 8px;
+  margin: 2px;
+  background: linear-gradient(135deg, #cc3a63 0%, #a22b4d 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 15px rgba(204, 58, 99, 0.35);
+}
+
+.btn-save:hover,
+.btn-send-reply-primary:hover,
+.add-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(204, 58, 99, 0.5);
+}
+
+.btn-mark-read {
+  background: rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  color: #93c5fd;
+}
+
+.btn-mark-read:hover {
+  background: rgba(37, 99, 235, 0.35);
+  color: #ffffff;
+}
+
+.delete-btn {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
+.delete-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
+  color: #ffffff;
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.pane-actions .delete-btn {
+  margin-left: auto;
+}
+
+/* ==========================================================================
+   FORM INPUTS & SETTINGS
+   ========================================================================== */
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-group label {
+  font-size: clamp(0.78rem, 1vw, 0.82rem);
+  color: rgba(243, 244, 244, 0.7) !important;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.add-type-form input {
+  width: 100%;
+  padding: clamp(0.65rem, 1.5vw, 0.8rem) 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  font-size: clamp(0.85rem, 1.1vw, 0.92rem);
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder,
+.add-type-form input::placeholder {
+  color: rgba(243, 244, 244, 0.3);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.add-type-form input:focus {
+  border-color: #cc3a63;
+  box-shadow: 0 0 0 3px rgba(204, 58, 99, 0.2);
+}
+
+.reply-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-delete-icon {
+  background: transparent;
+  border: none;
+  color: rgba(243, 244, 244, 0.6);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0.3rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-delete-icon:hover {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.15);
+}
+
+/* Settings Grid & Active Items */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 2vw, 1.25rem);
+}
+
+.paragraph-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  background: rgba(0, 0, 0, 0.2);
+  padding: clamp(0.85rem, 2vw, 1.1rem);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+}
+
+.paragraph-header {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(243, 244, 244, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.add-type-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.types-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.type-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  font-size: clamp(0.85rem, 1vw, 0.9rem);
+  word-break: break-word;
+  gap: 0.5rem;
+}
+
+.no-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: rgba(243, 244, 244, 0.4);
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  gap: 0.75rem;
+  text-align: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.admin-loading {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: rgba(243, 244, 244, 0.5);
+  font-size: 0.92rem;
+}
+
+.status-container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.replied-date-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.12);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+  .admin-tab-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tab-btn {
+    width: 100%;
+  }
+
+  .section-header-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-group {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .pane-actions,
+  .reply-modal-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    height: auto;
+  }
+
+  .pane-actions .delete-btn {
+    margin-left: 0 !important;
+  }
+
+  .btn-save,
+  .btn-mark-read,
+  .btn-send-reply-primary,
+  .delete-btn,
+  .add-btn {
+    width: 100%;
+  }
+
+  .modal-overlay {
+    padding: 1rem 0.5rem;
+  }
+}

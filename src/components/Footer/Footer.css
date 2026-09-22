@@ -1,0 +1,252 @@
+/* Footer Base Container */
+.footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 4rem 1.5rem 2rem 1.5rem; /* Reduced horizontal padding to prevent side overflow */
+  margin-top: 5rem;
+  color: var(--text-primary);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevents overflow scrolling on small screens */
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Grid Layout */
+.footer-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  gap: 3.5rem;
+  box-sizing: border-box;
+}
+
+/* Column Headings & Text */
+.footer-col h4 {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.footer-logo {
+  font-family: "Playfair Display", "Merriweather", Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+.footer-bio {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 380px;
+  margin-bottom: 1.5rem;
+}
+
+/* Social Icons */
+.footer-socials {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Prevents icons from wrapping offscreen */
+  gap: 1rem;
+}
+
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-socials a:hover {
+  background-color: var(--bg-primary);
+  border-color: var(--text-secondary);
+  transform: translateY(-2px);
+}
+
+/* Quick Links Column */
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-links a {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--text-primary);
+}
+
+/* Newsletter Section */
+.footer-newsletter p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.newsletter-icon {
+  margin-right: 0.5rem;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.newsletter-form input {
+  flex: 1;
+  min-width: 0; /* Important fix: allows input to shrink inside flexbox */
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.newsletter-form input:focus {
+  border-color: var(--text-primary);
+}
+
+.newsletter-form button {
+  padding: 0.65rem 1.25rem;
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.newsletter-form button:hover {
+  opacity: 0.9;
+}
+
+.newsletter-success {
+  padding: 0.65rem 0.85rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+  max-width: 1200px;
+  width: 100%;
+  margin: 3.5rem auto 0 auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.back-to-top-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.back-to-top-btn:hover {
+  color: var(--text-primary);
+}
+
+/* =========================================================
+   RESPONSIVE STYLES (Tablet & iPad)
+   ========================================================= */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 3.5rem 1.5rem 1.5rem 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr; /* Switch to 2-column layout on tablets */
+    gap: 2.5rem;
+  }
+
+  /* Expand newsletter column across full width on tablet */
+  .footer-col:last-child {
+    grid-column: span 2;
+  }
+
+  .footer-bio {
+    max-width: 100%;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE STYLES (Smartphones)
+   ========================================================= */
+@media (max-width: 640px) {
+  .footer {
+    padding: 2.5rem 1rem 1.25rem 1rem;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr; /* Switch to single column for mobile */
+    gap: 2rem;
+  }
+
+  .footer-col:last-child {
+    grid-column: span 1;
+  }
+
+  .newsletter-form {
+    flex-direction: column; /* Stack input and button vertically */
+    gap: 0.75rem;
+  }
+
+  .newsletter-form button {
+    width: 100%;
+  }
+
+  .footer-bottom {
+    flex-direction: column-reverse;
+    gap: 1.25rem;
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+
+  .back-to-top-btn {
+    margin-bottom: 0.5rem;
+  }
+}
