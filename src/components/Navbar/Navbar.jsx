@@ -49,7 +49,9 @@ const menuItemVariants = {
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [tagline, setTagline] = useState("Author & Essayist");
+  const [tagline, setTagline] = useState(
+    "Writer, Essayist, and Cultural Commentator",
+  );
   const [name, setName] = useState("Abhishek Kabra");
   const navRef = useRef(null);
 

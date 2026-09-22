@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,7 +11,6 @@ import {
   faLinkedinIn,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-import PublicAPI from "../../services/PublicAPI";
 import "./About.css";
 
 const getSocialIcon = (platform) => {
@@ -31,14 +30,8 @@ const getSocialIcon = (platform) => {
   }
 };
 
-export default function About() {
-  const [about, setAbout] = useState(null);
-
-  useEffect(() => {
-    PublicAPI.fetchAboutData()
-      .then((data) => setAbout(data))
-      .catch((err) => console.error("Error fetching about data:", err));
-  }, []);
+export default function About({ initialData }) {
+  const about = initialData;
 
   if (!about) return null;
 

@@ -12,19 +12,53 @@ import AdminDashboard from "../Admin/AdminDashboard";
 import "./Main.css";
 
 // Helper function to force the browser to preload the image asset completely
-const preloadImage = (src) => {
-  return new Promise((resolve) => {
-    if (!src) return resolve();
-    const img = new Image();
-    img.src = src;
-    img.onload = () => resolve();
-    img.onerror = () => resolve(); // Resolve anyway on error so the app doesn't hang
-  });
-};
 
 function MainContent() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [aboutData, setAboutData] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadInitialData = async () => {
+      try {
+        const [aboutRes] = await Promise.all([
+          PublicAPI.fetchAboutData(),
+          PublicAPI.getInquiryTypes(),
+        ]);
+
+        if (isMounted) {
+          setAboutData(aboutRes);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error("Error loading initial portfolio data:", err);
+        if (isMounted) {
+          setError(
+            err.response?.status
+              ? `HTTP ${err.response.status}`
+              : err.message || "Failed to establish database link",
+          );
+          setLoading(false);
+        }
+      }
+    };
+
+    loadInitialData();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  if (loading) {
+    /* ... existing spinner ... */
+  }
+
+  if (error) {
+    /* ... existing maintenance screen ... */
+  }
 
   useEffect(() => {
     let isMounted = true;
@@ -86,9 +120,6 @@ function MainContent() {
         }}
       >
         <FontAwesomeIcon icon={faSpinner} spin size="2x" />
-        <p style={{ fontFamily: "Merriweather, serif" }}>
-          Loading Publication Archive...
-        </p>
       </div>
     );
   }
@@ -134,7 +165,7 @@ function MainContent() {
     <>
       <Navbar />
       <main>
-        <About />
+        <About initialData={aboutData} />
         <Contact />
       </main>
       <Footer />
