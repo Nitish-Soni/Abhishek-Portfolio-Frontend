@@ -27,64 +27,19 @@ const AUTHOR_INFO = {
   contactEmail: "abhishek@abhishekkabra.com",
 };
 
-// Advanced Motion Variants
-const headerVariants = {
-  hidden: { opacity: 0, y: -25 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
-
-const cardStaggerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const cardChildVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.96 },
-  visible: {
+// Motion Variants with explicit slide-up & fade transition
+const slideUpVariant = {
+  hidden: { opacity: 0, y: 40, scale: 0.97 },
+  visible: (customDelay = 0) => ({
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
-
-const formContainerVariants = {
-  hidden: { opacity: 0, x: 20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
       duration: 0.7,
+      delay: customDelay,
       ease: [0.16, 1, 0.3, 1],
-      staggerChildren: 0.08,
-      delayChildren: 0.2,
     },
-  },
-};
-
-const formItemVariants = {
-  hidden: { opacity: 0, y: 15 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
-  },
+  }),
 };
 
 export default function Contact() {
@@ -158,7 +113,8 @@ export default function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={{ amount: 0.3 }}
-          variants={headerVariants}
+          variants={slideUpVariant}
+          custom={0}
         >
           <motion.p
             className="contact-label"
@@ -177,17 +133,16 @@ export default function Contact() {
         </motion.header>
 
         <div className="contact-grid">
-          {/* Left Column: Interactive Cards Stagger */}
-          <motion.div
-            className="contact-info-col"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ amount: 0.1 }}
-            variants={cardStaggerVariants}
-          >
+          {/* Left Column: Cards with ordered sequence */}
+          <div className="contact-info-col">
+            {/* 1. Literary Representation (Slides Up First) */}
             <motion.div
               className="info-card representation-card"
-              variants={cardChildVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 0.2 }}
+              variants={slideUpVariant}
+              custom={0} // No delay: comes first
               whileHover={{
                 y: -6,
                 boxShadow: "0 12px 30px rgba(0, 0, 0, 0.4)",
@@ -218,9 +173,14 @@ export default function Contact() {
               </div>
             </motion.div>
 
+            {/* 2. Direct Contact (Slides Up Second) */}
             <motion.div
               className="info-card direct-card"
-              variants={cardChildVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 0.2 }}
+              variants={slideUpVariant}
+              custom={0.25} // Delay 0.25s: comes after Literary Representation
               whileHover={{
                 y: -6,
                 boxShadow: "0 12px 30px rgba(0, 0, 0, 0.4)",
@@ -244,9 +204,14 @@ export default function Contact() {
               </a>
             </motion.div>
 
+            {/* 3. Response Times (Slides Up Last) */}
             <motion.div
               className="info-card guidelines-card"
-              variants={cardChildVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 0.2 }}
+              variants={slideUpVariant}
+              custom={0.45} // Delay 0.45s: comes last on left side
               whileHover={{
                 y: -6,
                 boxShadow: "0 12px 30px rgba(0, 0, 0, 0.4)",
@@ -267,16 +232,10 @@ export default function Contact() {
                 always cherished!
               </p>
             </motion.div>
-          </motion.div>
+          </div>
 
-          {/* Right Column: Animated Form Fields */}
-          <motion.div
-            className="contact-form-col"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ amount: 0.1 }}
-            variants={formContainerVariants}
-          >
+          {/* Right Column: Form Container and Elements */}
+          <div className="contact-form-col">
             <AnimatePresence mode="wait">
               {submitted ? (
                 <motion.div
@@ -325,14 +284,7 @@ export default function Contact() {
                   </motion.button>
                 </motion.div>
               ) : (
-                <motion.form
-                  key="contact-form"
-                  onSubmit={handleSubmit}
-                  className="contact-form"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
+                <form onSubmit={handleSubmit} className="contact-form">
                   {errorMessage && (
                     <motion.div
                       className="form-error-banner"
@@ -344,10 +296,15 @@ export default function Contact() {
                     </motion.div>
                   )}
 
+                  {/* Form Field Row: Name & Email */}
                   <div className="form-row">
                     <motion.div
                       className="form-group"
-                      variants={formItemVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ amount: 0.2 }}
+                      variants={slideUpVariant}
+                      custom={0.1} // Starts sliding alongside Literary Representation
                     >
                       <label htmlFor="name" className="label">
                         Your Name *
@@ -365,7 +322,11 @@ export default function Contact() {
 
                     <motion.div
                       className="form-group"
-                      variants={formItemVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ amount: 0.2 }}
+                      variants={slideUpVariant}
+                      custom={0.2} // Follows slightly after Name
                     >
                       <label htmlFor="email" className="label">
                         Email Address *
@@ -382,9 +343,14 @@ export default function Contact() {
                     </motion.div>
                   </div>
 
+                  {/* Inquiry Type Field */}
                   <motion.div
                     className="form-group"
-                    variants={formItemVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ amount: 0.2 }}
+                    variants={slideUpVariant}
+                    custom={0.3}
                   >
                     <label htmlFor="inquiryType" className="label">
                       Nature of Inquiry
@@ -403,9 +369,14 @@ export default function Contact() {
                     </select>
                   </motion.div>
 
+                  {/* Subject Field */}
                   <motion.div
                     className="form-group"
-                    variants={formItemVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ amount: 0.2 }}
+                    variants={slideUpVariant}
+                    custom={0.4}
                   >
                     <label htmlFor="subject" className="label">
                       Subject *
@@ -421,9 +392,14 @@ export default function Contact() {
                     />
                   </motion.div>
 
+                  {/* Message Field */}
                   <motion.div
                     className="form-group"
-                    variants={formItemVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ amount: 0.2 }}
+                    variants={slideUpVariant}
+                    custom={0.5}
                   >
                     <label className="label" htmlFor="message">
                       Message *
@@ -439,38 +415,50 @@ export default function Contact() {
                     ></textarea>
                   </motion.div>
 
-                  <motion.button
-                    type="submit"
-                    className="submit-btn"
-                    disabled={loading}
-                    variants={formItemVariants}
-                    whileHover={{ y: -3, scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  {/* Submit Button */}
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ amount: 0.2 }}
+                    variants={slideUpVariant}
+                    custom={0.6}
                   >
-                    {loading ? (
-                      <>
-                        <FontAwesomeIcon
-                          icon={faSpinner}
-                          spin
-                          className="submit-icon"
-                        />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <FontAwesomeIcon
-                          icon={faPaperPlane}
-                          className="submit-icon"
-                        />
-                        Send Inquiry
-                      </>
-                    )}
-                  </motion.button>
-                </motion.form>
+                    <motion.button
+                      type="submit"
+                      className="submit-btn"
+                      disabled={loading}
+                      whileHover={{ y: -3, scale: 1.01 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 17,
+                      }}
+                    >
+                      {loading ? (
+                        <>
+                          <FontAwesomeIcon
+                            icon={faSpinner}
+                            spin
+                            className="submit-icon"
+                          />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <FontAwesomeIcon
+                            icon={faPaperPlane}
+                            className="submit-icon"
+                          />
+                          Send Inquiry
+                        </>
+                      )}
+                    </motion.button>
+                  </motion.div>
+                </form>
               )}
             </AnimatePresence>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
