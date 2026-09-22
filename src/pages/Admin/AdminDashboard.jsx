@@ -19,9 +19,9 @@ import {
 import AdminLogin from "./AdminLogin";
 import AdminAPI from "../../services/AdminAPI";
 import "./AdminDashboard.css";
-import AdminContact from "../../Components/Admin/AdminContact";
-import AboutAdmin from "../../Components/Admin/AboutAdmin";
-import AdminSubscribers from "../../Components/Admin/AdminSubscriber";
+import AdminContact from "../../components/Admin/AdminContact";
+import AboutAdmin from "../../components/Admin/AboutAdmin";
+import AdminSubscribers from "../../components/Admin/AdminSubscriber";
 
 // Framer Motion Animation Variants
 const containerVariants = {
