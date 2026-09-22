@@ -61,6 +61,8 @@
   object-fit: cover;
   display: block;
   border-radius: 6px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
 }
 
 /* Right Overlapping Content Card (Layer 3) */

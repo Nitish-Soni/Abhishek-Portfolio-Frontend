@@ -11,6 +11,17 @@ import PublicAPI from "../../services/PublicAPI";
 import AdminDashboard from "../Admin/AdminDashboard";
 import "./Main.css";
 
+// Helper function to force the browser to preload the image asset completely
+const preloadImage = (src) => {
+  return new Promise((resolve) => {
+    if (!src) return resolve();
+    const img = new Image();
+    img.src = src;
+    img.onload = () => resolve();
+    img.onerror = () => resolve(); // Resolve anyway on error so the app doesn't hang
+  });
+};
+
 function MainContent() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -18,13 +29,25 @@ function MainContent() {
   useEffect(() => {
     let isMounted = true;
 
-    // Fetch essential initial public data together before revealing the page
     const loadInitialData = async () => {
       try {
-        await Promise.all([
+        // 1. Fetch API data first
+        const [aboutData] = await Promise.all([
           PublicAPI.fetchAboutData(),
           PublicAPI.getInquiryTypes(),
         ]);
+
+        // 2. Preload profile image if a URL exists in the response
+        if (
+          aboutData?.imageUrl ||
+          aboutData?.profileImage ||
+          aboutData?.image
+        ) {
+          const imageUrl =
+            aboutData.imageUrl || aboutData.profileImage || aboutData.image;
+          await preloadImage(imageUrl);
+        }
+
         if (isMounted) {
           setLoading(false);
         }
