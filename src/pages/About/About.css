@@ -27,6 +27,8 @@
 
 /* Update 2: Fix left photo container sizing */
 .about-image-wrapper {
+  aspect-ratio: 4 / 5; /* Keeps fixed height before image renders */
+  overflow: hidden;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -61,8 +63,6 @@
   object-fit: cover;
   display: block;
   border-radius: 6px;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
 }
 
 /* Right Overlapping Content Card (Layer 3) */
