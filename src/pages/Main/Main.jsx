@@ -10,6 +10,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import PublicAPI from "../../services/PublicAPI";
 import AdminDashboard from "../Admin/AdminDashboard";
 import "./Main.css";
+import Unsubscribe from "../Unsubscribe/Unsubscribe";
 
 // Helper function to force the browser to preload the image asset completely
 
@@ -183,6 +184,7 @@ export default function App() {
             <Route path="/" element={<MainContent />} />
 
             {/* Admin Portal Route */}
+            <Route path="/unsubscribe" element={<Unsubscribe />} />
             <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </div>
