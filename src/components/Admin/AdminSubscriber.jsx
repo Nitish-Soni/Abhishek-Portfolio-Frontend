@@ -314,7 +314,7 @@ export default function AdminSubscribers() {
             className={statusFilter === "unsubscribed" ? "active" : ""}
             onClick={() => setStatusFilter("unsubscribed")}
           >
-            Unsubscribed ({unsubscribedCount})
+            Inactive ({unsubscribedCount})
           </motion.button>
         </div>
       </motion.div>
